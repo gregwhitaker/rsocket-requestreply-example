@@ -1,4 +1,5 @@
 # rsocket-requestreply-example
+[![Build Status](https://travis-ci.org/gregwhitaker/rsocket-requestreply-example.svg?branch=master)](https://travis-ci.org/gregwhitaker/rsocket-requestreply-example)
 
 Example showing how to send request/reply messages between applications using [RSocket](https://github.com/rsocket).
 
