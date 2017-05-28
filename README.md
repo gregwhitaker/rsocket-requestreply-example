@@ -5,7 +5,8 @@ The example starts a client and server.  The client sends 100 ping messages to t
 matching pong message.
 
 ## Prerequisites
-This example requires that you have the latest version of [rsocket-java](https://github.com/rsocket/rsocket-java) installed locally.
+This example requires that you have the latest version of [rsocket-java](https://github.com/rsocket/rsocket-java) installed locally. This requirement
+will be removed once the 1.0 version of rsocket has been released.
 
 ## Running the Example
 The example can be run using the following gradle command:
