@@ -1,6 +1,4 @@
 # rsocket-requestreply-example
-[![Build Status](https://travis-ci.org/gregwhitaker/rsocket-requestreply-example.svg?branch=master)](https://travis-ci.org/gregwhitaker/rsocket-requestreply-example)
-
 Example showing how to send request/reply messages between applications using [RSocket](https://github.com/rsocket).
 
 The example starts a client and server.  The client sends 100 ping messages to the server and the server responds with a 
