@@ -22,6 +22,7 @@ import io.rsocket.transport.netty.client.TcpClientTransport;
 import io.rsocket.util.PayloadImpl;
 
 import java.nio.charset.StandardCharsets;
+import java.util.concurrent.CountDownLatch;
 
 public class Ping {
 
@@ -37,17 +38,25 @@ public class Ping {
         this.port = port;
     }
 
-    public void start() {
+    public void start() throws InterruptedException {
         RSocket client = RSocketFactory
                 .connect()
                 .transport(TcpClientTransport.create(bindAddress, port))
                 .start()
                 .block();
 
+        CountDownLatch latch = new CountDownLatch(100);
+
         for (int i = 1; i <= 100; i++) {
             System.out.println("Ping: " + i);
             client.requestResponse(new PayloadImpl("Ping " + i))
-                    .subscribe(payload -> System.out.println(StandardCharsets.UTF_8.decode(payload.getData()).toString()));
+                    .subscribe(payload -> {
+                        System.out.println(StandardCharsets.UTF_8.decode(payload.getData()).toString());
+                        latch.countDown();
+                    });
         }
+
+        latch.await();
+        System.exit(0);
     }
 }
