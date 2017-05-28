@@ -17,11 +17,8 @@
 package com.github.gregwhitaker.rsocket.example;
 
 import io.rsocket.AbstractRSocket;
-import io.rsocket.ConnectionSetupPayload;
 import io.rsocket.Payload;
-import io.rsocket.RSocket;
 import io.rsocket.RSocketFactory;
-import io.rsocket.SocketAcceptor;
 import io.rsocket.transport.netty.server.TcpServerTransport;
 import io.rsocket.util.PayloadImpl;
 import reactor.core.publisher.Mono;
