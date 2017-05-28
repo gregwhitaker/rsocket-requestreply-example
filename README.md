@@ -4,6 +4,9 @@ Example showing how to send request/reply messages between applications using [R
 The example starts a client and server.  The client sends 100 ping messages to the server and the server responds with a 
 matching pong message.
 
+## Prerequisites
+This example requires that you have the latest version of [rsocket-java](https://github.com/rsocket/rsocket-java) installed locally.
+
 ## Running the Example
 The example can be run using the following gradle command:
 
