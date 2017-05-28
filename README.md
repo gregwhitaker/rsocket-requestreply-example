@@ -1,5 +1,12 @@
 # rsocket-requestreply-example
+Example showing how to send request/reply messages between applications using [RSocket](https://github.com/rsocket).
 
+## Running the Example
+The example can be run using the following gradle command:
+
+```
+$ ./gradlew run
+```
 
 ## Bugs and Feedback
 
