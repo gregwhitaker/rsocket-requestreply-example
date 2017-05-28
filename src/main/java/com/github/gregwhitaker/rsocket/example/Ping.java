@@ -16,5 +16,38 @@
 
 package com.github.gregwhitaker.rsocket.example;
 
+import io.rsocket.RSocket;
+import io.rsocket.RSocketFactory;
+import io.rsocket.transport.netty.client.TcpClientTransport;
+import io.rsocket.util.PayloadImpl;
+
+import java.nio.charset.StandardCharsets;
+
 public class Ping {
+
+    private final String bindAddress;
+    private final int port;
+
+    public Ping() {
+        this("localhost", 8080);
+    }
+
+    public Ping(final String bindAddress, final int port) {
+        this.bindAddress = bindAddress;
+        this.port = port;
+    }
+
+    public void start() {
+        RSocket client = RSocketFactory
+                .connect()
+                .transport(TcpClientTransport.create(bindAddress, port))
+                .start()
+                .block();
+
+        for (int i = 1; i <= 100; i++) {
+            System.out.println("Ping: " + i);
+            client.requestResponse(new PayloadImpl("Ping" + i))
+                    .subscribe(payload -> System.out.println(StandardCharsets.UTF_8.decode(payload.getData()).toString()));
+        }
+    }
 }

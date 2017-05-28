@@ -16,5 +16,46 @@
 
 package com.github.gregwhitaker.rsocket.example;
 
+import io.rsocket.AbstractRSocket;
+import io.rsocket.ConnectionSetupPayload;
+import io.rsocket.Payload;
+import io.rsocket.RSocket;
+import io.rsocket.RSocketFactory;
+import io.rsocket.SocketAcceptor;
+import io.rsocket.transport.netty.server.TcpServerTransport;
+import io.rsocket.util.PayloadImpl;
+import reactor.core.publisher.Mono;
+
+import java.nio.charset.StandardCharsets;
+
 public class Pong {
+
+    private final String bindAddress;
+    private final int port;
+
+    public Pong() {
+        this("localhost", 8080);
+    }
+
+    public Pong(final String bindAddress, final int port) {
+        this.bindAddress = bindAddress;
+        this.port = port;
+    }
+
+    public void start() {
+        RSocketFactory
+                .receive()
+                .acceptor((setupPayload, reactiveSocket) ->
+                    Mono.just(new AbstractRSocket() {
+                        @Override
+                        public Mono<Payload> requestResponse(Payload p) {
+                            String count = StandardCharsets.UTF_8.decode(p.getData()).toString().split(" ")[1];
+                            return Mono.just(new PayloadImpl("Pong: " + count));
+                        }
+                    })
+                )
+                .transport(TcpServerTransport.create("localhost", 7000))
+                .start()
+                .subscribe();
+    }
 }
