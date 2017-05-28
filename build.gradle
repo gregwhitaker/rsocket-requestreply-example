@@ -1,0 +1,15 @@
+group 'com.github.gregwhitaker'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    compile 'io.rsocket:rsocket-transport-netty:0.9-SNAPSHOT'
+}
