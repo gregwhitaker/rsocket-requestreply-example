@@ -46,7 +46,7 @@ public class Ping {
 
         for (int i = 1; i <= 100; i++) {
             System.out.println("Ping: " + i);
-            client.requestResponse(new PayloadImpl("Ping" + i))
+            client.requestResponse(new PayloadImpl("Ping " + i))
                     .subscribe(payload -> System.out.println(StandardCharsets.UTF_8.decode(payload.getData()).toString()));
         }
     }

@@ -54,8 +54,8 @@ public class Pong {
                         }
                     })
                 )
-                .transport(TcpServerTransport.create("localhost", 7000))
+                .transport(TcpServerTransport.create("localhost", 8080))
                 .start()
-                .subscribe();
+                .block();
     }
 }

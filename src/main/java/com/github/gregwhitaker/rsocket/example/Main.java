@@ -18,7 +18,13 @@ package com.github.gregwhitaker.rsocket.example;
 
 public class Main {
 
-    public static void main(String... args) {
+    public static void main(String... args) throws Exception {
+        Pong pong = new Pong();
+        Ping ping = new Ping();
 
+        pong.start();
+        ping.start();
+
+        Thread.currentThread().join();
     }
 }
