@@ -1,18 +1,14 @@
-group 'com.github.gregwhitaker'
-version '1.0.0'
+allprojects {
+    apply plugin: "idea"
 
-apply plugin: 'application'
-apply plugin: 'java'
+    group = 'com.github.gregwhitaker'
+    version = '0.1.0'
 
-sourceCompatibility = 1.8
+    ext {
+        rsocketVersion = '1.0.0-RC5'
+    }
 
-repositories {
-    mavenLocal()
-    mavenCentral()
+    repositories {
+        mavenCentral()
+    }
 }
-
-dependencies {
-    compile 'io.rsocket:rsocket-transport-netty:0.9-SNAPSHOT'
-}
-
-mainClassName = 'com.github.gregwhitaker.rsocket.example.Main'
