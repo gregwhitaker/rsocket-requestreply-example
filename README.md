@@ -1,4 +1,7 @@
 # rsocket-requestreply-example
+An example of send using the request-reply interaction model in [RSocket](http://rsocket.io).
+
+In this example a `hello-client` sends a name to the `hello-service`, which formats a hello message and responds to the client.
 
 ## Building the Example
 Run the following command to build the example:
@@ -8,7 +11,18 @@ Run the following command to build the example:
 ## Running the Example
 Follow the steps below to run the example:
 
-TBD
+1. Run the following command to start the `hello-service`:
+
+        ./gradlew :hello-service:run
+        
+2. Run the following command to send a request for a hello message using the `hello-client`:
+
+        ./gradlew :hello-client:run --args=Bob
+        
+    If successful, you will see the following response:
+
+        > Task :hello-client:run
+        [reactor-tcp-nio-1] INFO example.hello.client.HelloClient - Response: Hello, Bob!
 
 ## Bugs and Feedback
 For bugs, questions, and discussions please use the [Github Issues](https://github.com/gregwhitaker/rsocket-requestreply-example/issues).
