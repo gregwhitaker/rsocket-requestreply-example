@@ -1,5 +1,5 @@
 # rsocket-requestreply-example
-An example of send using the request-reply interaction model in [RSocket](http://rsocket.io).
+An example of communicating between applications using the request-reply interaction model in [RSocket](http://rsocket.io).
 
 In this example a `hello-client` sends a name to the `hello-service`, which formats a hello message and responds to the client.
 
